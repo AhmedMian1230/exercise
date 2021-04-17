@@ -1,3 +1,6 @@
+**Data sources used in this project**
+- https://www.defense.gov/data.json
+- https://www.defense.gov/digitalstrategy/costsavings.json
 
 **Preamble**
 
