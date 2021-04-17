@@ -14,8 +14,18 @@ const AllDatasets = () => {
         } catch (err) {
             console.log('Error fetching from /api/data endpoint ', err)
         }
-    }, []) 
-    
+    }, [])
+
+    const handleSort = (criteria) => {
+        const sortedData = datasets.sort((a, b) => a[criteria] > b[criteria] ? 1 : -1)
+        setDatasets([...sortedData])
+    }
+
+    const handleReverseSort = (criteria) => {
+        const sortedData = datasets.sort((a, b) => a[criteria] < b[criteria] ? 1 : -1)
+        setDatasets([...sortedData])
+    }
+
     return (
         <>
             <div className='top'>
@@ -27,9 +37,12 @@ const AllDatasets = () => {
                         Sort by
                 </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item /*onClick={}*/>Criteria 1</Dropdown.Item>
-                        <Dropdown.Item>Criteria 2</Dropdown.Item>
-                        <Dropdown.Item>Criteria 3</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleSort('title')}>Title</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleReverseSort('title')}>Title (Reverse)</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleSort('modified')}>Modified (Oldest)</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleReverseSort('modified')}>Modified (Newest)</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleSort('bureauCode')}>Bureau Code</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleSort('programCode')}>Program Code</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>

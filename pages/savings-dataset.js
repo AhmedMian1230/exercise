@@ -38,6 +38,16 @@ const SavingsDataset = () => {
         return tdArray
     }
 
+    const handleSort = (criteria) => {
+        const sortedData = savings.sort((a, b) => a[criteria] > b[criteria] ? 1 : -1)
+        setSavings([...sortedData])
+    }
+
+    const handleReverseSort = (criteria) => {
+        const sortedData = savings.sort((a, b) => a[criteria] < b[criteria] ? 1 : -1)
+        setSavings([...sortedData])
+    }
+
     // Generate array of all unique headers
     const savingsKeys = []
     savings.forEach((saving) => {
@@ -58,9 +68,14 @@ const SavingsDataset = () => {
                         Sort by
                 </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item /*onClick={}*/>Criteria 1</Dropdown.Item>
-                        <Dropdown.Item>Criteria 2</Dropdown.Item>
-                        <Dropdown.Item>Criteria 3</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleSort('strategyId')}>Strategy Id</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleReverseSort('strategyId')}>Strategy Id (Reverse)</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleSort('strategyTitle')}>Strategy Title</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleReverseSort('strategyTitle')}>Strategy Title (Reverse)</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleSort('decisionDate')}>Decision Date (Oldest)</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleReverseSort('decisionDate')}>Decision Date (Newest)</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleSort('ombInitiative')}>OMB Initiative</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleReverseSort('ombInitiative')}>OMB Initiative (Reverse)</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
