@@ -17,11 +17,23 @@ const SavingsDataset = () => {
     }, [])
 
     // Generate the cells for table
-    // TODO: Format the cells that contain json to make more readable
     const generateTds = (savingJson, uniqueKeys) => {
         const tdArray = []
         uniqueKeys.forEach((uniqueKey) => {
-            tdArray.push(<td>{JSON.stringify(savingJson[uniqueKey])}</td>)
+            if (savingJson.hasOwnProperty(uniqueKey)) {
+                if (typeof savingJson[uniqueKey] !== 'object' || Array.isArray(savingJson[uniqueKey])) {
+                    tdArray.push(<td>{savingJson[uniqueKey].toString()}</td>)
+                } else {
+                    const json = savingJson[uniqueKey]
+                    const jsonSummary = []
+                    for (const field in json) {
+                        jsonSummary.push(`${field} - ${json[field]}`)
+                    }
+                    tdArray.push(<td>{jsonSummary.join('\n')}</td>)
+                }
+            } else {
+                tdArray.push(<td>{''}</td>)
+            }
         })
         return tdArray
     }
