@@ -14,7 +14,8 @@ const AllDatasets = () => {
         } catch (err) {
             console.log('Error fetching from /api/data endpoint ', err)
         }
-    }, [])
+    }, []) 
+    
     return (
         <>
             <div className='top'>
