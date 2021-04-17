@@ -1,6 +1,7 @@
 import axios from "axios"
+import Link from "next/link"
 import { useEffect, useState } from "react"
-import { Table } from "react-bootstrap"
+import { Table, Dropdown, Button } from "react-bootstrap"
 
 const SavingsDataset = () => {
 
@@ -36,24 +37,42 @@ const SavingsDataset = () => {
 
     return (
         <>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        {uniqueSavingsKeys.map((saving) => {
-                            return <th>{saving}</th>
+            <div className='top'>
+                <Link href={'/'}>
+                    <Button variant="secondary">&larr; Back</Button>
+                </Link>
+                <Dropdown>
+                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                        Sort by
+                </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item /*onClick={}*/>Criteria 1</Dropdown.Item>
+                        <Dropdown.Item>Criteria 2</Dropdown.Item>
+                        <Dropdown.Item>Criteria 3</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
+            <div>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            {uniqueSavingsKeys.map((saving) => {
+                                return <th>{saving}</th>
+                            })}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {savings.map((saving) => {
+                            return (
+                                <tr>
+                                    {generateTds(saving, uniqueSavingsKeys)}
+                                </tr>
+                            )
                         })}
-                    </tr>
-                </thead>
-                <tbody>
-                    {savings.map((saving) => {
-                        return (
-                            <tr>
-                                {generateTds(saving, uniqueSavingsKeys)}
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </Table>
+                    </tbody>
+                </Table>
+            </div>
+
         </>
     )
 }
