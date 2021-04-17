@@ -1,0 +1,15 @@
+.accordion {
+    font-size: 15px;
+}
+
+.card-header:hover {
+    background-color: rgb(241, 241, 241);
+}
+
+.datasets {
+    width: 100%;
+    padding-right: 14%;
+    padding-left: 14%;
+    margin-right: auto;
+    margin-left: auto;
+}

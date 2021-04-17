@@ -79,8 +79,8 @@ const SavingsDataset = () => {
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
-            <div>
-                <Table striped bordered hover>
+            <div className='savingsDatasets'>
+                <Table striped bordered hover size='sm'>
                     <thead>
                         <tr>
                             {uniqueSavingsKeys.map((saving) => {

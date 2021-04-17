@@ -46,7 +46,7 @@ const AllDatasets = () => {
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
-            <div>
+            <div className='datasets'>
                 {/* Display each dataset within an accordion */}
                 {datasets.length > 0 &&
                     datasets.map(dataset => <DatasetAccordion dataset={dataset} />)
