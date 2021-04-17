@@ -2,6 +2,7 @@ import { Accordion, Card, Container, Row, Col } from "react-bootstrap"
 
 const DatasetAccordion = ({ dataset }) => {
     // TODO: Make data in Card.Body more readable
+    
     // Format data within accordion card
     const body = []
     for (const property in dataset) {
@@ -13,6 +14,7 @@ const DatasetAccordion = ({ dataset }) => {
             </Row>
         )
     }
+
     return (
         <>
             <Accordion>
